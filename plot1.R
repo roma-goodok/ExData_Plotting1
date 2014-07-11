@@ -13,18 +13,19 @@ fileName <- "..\\data\\household_power_consumption.txt"
 initial <- read.table(fileName,  header = TRUE, sep=";", nrows = 1000, na.strings <- c("?"))
 classes <- sapply(initial, class)
 
-ds <- read.table(fileName,  header = TRUE,   sep=";", na.strings = c("?"))
+d.draft <- read.table(fileName,  header = TRUE,   sep=";", na.strings = c("?"))
 
 #
 # filter loaded dataset and bind row with converted to datetime  "Date", "Time" factor
 #
 
+d <- d.draft[d.draft$Date == "2/2/2007" | d.draft$Date == "1/2/2007",]
 
-d <- ds[ds$Date == "2/2/2007" | ds$Date == "1/2/2007",]
-d.tidy <- d;
-d.tidy <- data.frame(d, datetime =  strptime( paste(d$Date,d$Time), "%d/%m/%Y %H:%M:%S"))
+d <- data.frame(d, datetime =  strptime( paste(d$Date,d$Time), "%d/%m/%Y %H:%M:%S"))
 
-names(d.tidy)
-str(d.tidy)
-## check first weekday: head(format (d_tidy$datetime, "%a"))
+names(d)
+str(d)
+## check first weekday: head(format (d$datetime, "%a"))
+
+hist(d$Global_active_power, main = "Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
 
