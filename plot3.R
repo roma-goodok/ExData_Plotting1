@@ -39,7 +39,7 @@ head(format (d$datetime, "%a"))
 # Plot plot3 and save result to file:
 #
 
-png(file = "plot3.png", width = 480, height = 480, bg="#FF000000" )
+png(file = "plot3.png", width = 480, height = 480)
 
 plot(d$datetime, d$Sub_metering_1, type = "l", ylab="Energy sub metering", xlab="")
 lines(d$datetime, d$Sub_metering_2, col="red")

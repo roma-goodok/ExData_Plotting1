@@ -40,7 +40,7 @@ head(format (d$datetime, "%a"))
 #
 
 
-png(file = "plot4.png", width = 480, height = 480, bg="#FF000000" )
+png(file = "plot4.png", width = 480, height = 480)
 
 par(mfcol = c(2, 2));
 
