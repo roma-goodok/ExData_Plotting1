@@ -46,7 +46,7 @@ par(mfcol = c(2, 2));
 
 
   # plot 4.1 - Global Active Power 
-  plot(d$datetime, d$Global_active_power, type = "l", ylab="Global Active Power (kilowatts)", xlab="")
+  plot(d$datetime, d$Global_active_power, type = "l", ylab="Global Active Power", xlab="")
   
   # plot 4.2 - Energy sub metering
   
