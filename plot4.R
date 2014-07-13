@@ -32,13 +32,36 @@ d <- data.frame(d, datetime =  strptime( paste(d$Date,d$Time), "%d/%m/%Y %H:%M:%
 names(d)
 str(d)
 ## check first weekday: head(format (d$datetime, "%a"))
+head(format (d$datetime, "%a"))
+
 
 #
-# Plot plot1 and save result to file:
+# Plot plot4 and save result to file:
 #
 
-png(file = "plot1.png", width = 480, height = 480)
 
-hist(d$Global_active_power, main = "Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
+png(file = "plot4.png", width = 480, height = 480, bg="#FF000000" )
+
+par(mfcol = c(2, 2));
+
+
+  # plot 4.1 - Global Active Power 
+  plot(d$datetime, d$Global_active_power, type = "l", ylab="Global Active Power (kilowatts)", xlab="")
+  
+  # plot 4.2 - Energy sub metering
+  
+  plot(d$datetime, d$Sub_metering_1, type = "l", ylab="Energy sub metering", xlab="")
+  lines(d$datetime, d$Sub_metering_2, col="red")
+  lines(d$datetime, d$Sub_metering_3, col="blue")
+  
+  legend("topright", bty="n", col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
+     lty=c(1,1,1), # gives the legend appropriate symbols (lines)
+     lwd=c(1,1,1)) # gives the legend lines appropriate width
+  
+  #plot 4.3 - Voltage
+  plot(d$datetime, d$Voltage, type = "l", ylab="Voltage", xlab="datetime")
+  
+  #plot 4.4 = Global Reactive Power
+  plot(d$datetime, d$Global_reactive_power, type = "l", ylab="Global_reactive_power", , xlab="datetime")
 
 dev.off()

@@ -32,13 +32,15 @@ d <- data.frame(d, datetime =  strptime( paste(d$Date,d$Time), "%d/%m/%Y %H:%M:%
 names(d)
 str(d)
 ## check first weekday: head(format (d$datetime, "%a"))
+head(format (d$datetime, "%a"))
+
 
 #
-# Plot plot1 and save result to file:
+# Plot plot2 and save result to file:
 #
 
-png(file = "plot1.png", width = 480, height = 480)
+png(file = "plot2.png", width = 480, height = 480)
 
-hist(d$Global_active_power, main = "Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
+plot(d$datetime, d$Global_active_power, type = "l", ylab="Global Active Power (kilowatts)", xlab="")
 
 dev.off()
